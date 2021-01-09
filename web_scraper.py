@@ -23,11 +23,13 @@ for job_elem in job_elems: #job_elem is a BeautifulSoup object
     print()
 
 # only retrieving the text, no HTML elements, so that it is easier to read
-for job_elem in job_elems: #job_elem is a BeautifulSoup object
-    job_title = job_elem.find('h2', class_ = 'title')
-    job_comp = job_elem.find('div', class_ = 'company')
-    job_location = job_elem.find('div', class_ = 'location')
-    print(job_title.text)
-    print(job_comp.text)
-    print(job_location.text)
+for job_elem in job_elems:  # job_elem is a BeautifulSoup object
+    print(job_title.text.strip())
+    print(job_comp.text.strip())
+    print(job_location.text.strip())
     print()
+
+python_jobs = results.find_all('h2', string = 'Python Developer')
+python_jobs = results.find_all('h2',
+                               string=lambda text: 'python' in text.lower()) #trying to find a job with python
+print(len(python_jobs))
