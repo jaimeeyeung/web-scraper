@@ -33,3 +33,9 @@ python_jobs = results.find_all('h2', string = 'Python Developer')
 python_jobs = results.find_all('h2',
                                string=lambda text: 'python' in text.lower()) #trying to find a job with python
 print(len(python_jobs))
+
+# this will give you the jobs that include python in the job title
+for p_jon in python_jobs:
+    link = p_jon.find('a')['href']
+    print(p_job.text.strip())
+    print(f"Apply here: {link}\n")
